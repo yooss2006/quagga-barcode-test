@@ -1,21 +1,14 @@
-import { useState } from "react";
-import Scanner from "./Scanner";
-function App() {
-  const [camera, setCamera] = useState(false);
-  const [result, setResult] = useState(null);
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import WebCam from "./WebCam";
 
-  const onDetected = (result) => {
-    setResult(result);
-  };
+function App() {
   return (
     <div className="App">
-      <p>{result ? result : "Scanning..."}</p>
-      <button onClick={() => setCamera(!camera)}>
-        {camera ? "Stop" : "Start"}
-      </button>
-      <div className="container">
-        {camera && <Scanner onDetected={onDetected} />}
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<WebCam />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
